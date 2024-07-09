@@ -12,9 +12,9 @@ import Layout from "./Layout";
 const route = createBrowserRouter(
     createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path='/:roomId?' element={<Login />} />
+      <Route path=':roomId?' element={<Login />} />
       <Route element={<Protected />}>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Route>
     </Route>
   )
