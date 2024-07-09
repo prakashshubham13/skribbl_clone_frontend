@@ -9,7 +9,7 @@ import { Theme } from "../utils/theme/ThemeContext";
 import { updateRoomId } from "../redux/gameSlice";
 import { useDispatch } from "react-redux";
 
-const URL = 'http://localhost:5000';
+const URL = process.env.REACT_APP_SOCKET_URL;
 
 export const color_coordinated = [
   { id: "1", x: -100, y: 0 },
