@@ -1,0 +1,46 @@
+.col_1{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    align-items: center;
+    font-size: 0.7rem;
+}
+.clock{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../assets/images/clock.gif);
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    display: grid;
+    place-items: center;
+}
+.col_2{
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.7rem;
+}
+.col_2 span{
+    letter-spacing: 0.6rem;
+    font-weight: 300;
+    padding-left: 0.6rem;
+}
+.col_3{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    font-size: 0.7rem;
+}
+
+@media (orientation: portrait) {
+    .col1{
+        
+    }
+    .col_2 span{
+        letter-spacing: 0.2rem;
+        font-weight: 300;
+    }
+}

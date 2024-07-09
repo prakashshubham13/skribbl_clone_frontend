@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  [data-theme='light']{
+    --bg-color:orange;
+    --bg-img:url('../src/assets/images/light_background.jpg');
+    }
+    [data-theme='dark']{
+    --bg-color:black;
+    --bg-img:url('../src/assets/images/background.png');
+    }
+  body{
+    background-color: var(--bg-color);
+    background-image: var(--bg-img);
+    background-repeat: repeat;
+    height: 100%;
+    background-size: 350px;
+    image-rendering: pixelated;
+    font-family: "Nunito Sans", sans-serif;
+  }

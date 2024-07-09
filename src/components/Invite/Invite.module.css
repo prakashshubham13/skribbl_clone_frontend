@@ -1,0 +1,48 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    height: 50px;
+    border-radius: 3px;
+    overflow-x: hidden;
+}
+.container .copy_btn{
+    background: #2c8de7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    text-shadow :2px 2px 0 #0000002b;
+}.container .copy_btn:hover{
+    background: #1671c5;
+}
+.container .copy_text{
+    border-radius: none;
+    border: 1px solid #2c8de7;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    text-align: center;
+    font-size: 24px;
+    color: #2c8de7;
+    border-radius: 3px;
+    text-align: center;
+
+}
+
+@media (orientation: portrait) {
+    .container{
+        height: 30px;
+        width: 90vw;
+        grid-template-columns: 1fr 80px;
+    }
+    .container input[type='text']{
+        font-size: 0.8rem;
+    }
+    .container .copy_btn{
+        font-size: 10px;
+    }
+}

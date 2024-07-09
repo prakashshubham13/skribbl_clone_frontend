@@ -1,0 +1,13 @@
+.canvas_conatiner{
+    width: 50vw;
+    height: 60vh;
+    background: blue;
+    position: relative;
+  }
+
+@media (orientation: portrait) {
+    .canvas_conatiner {
+        width: 95vw;
+        height: 50vh;
+    }
+}

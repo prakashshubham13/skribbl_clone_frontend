@@ -1,0 +1,104 @@
+:root{
+    --vh:8.26px;
+}
+.game{
+    display: flex;
+    justify-content: center;
+}
+.game-wrapper{
+    display: grid;
+    grid-template-areas: "logo logo logo"
+    "bar bar bar"
+    "score canvas chat"
+    ". tools ."
+    ". invite .";
+    grid-template-columns: min-content auto auto;
+    grid-template-rows: min-content 48px min-content min-content;
+    gap: 10px;
+}
+.logo_contr{
+    grid-area: logo;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.header_contr{
+    grid-area: bar;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 3px;
+    align-items: center;
+    height: auto;
+}
+.score_contr{
+    grid-area: score;
+    background-color: #fff;
+    width: 250px;
+    border-radius: 3px;
+
+}
+.canvas_contr{
+    grid-area: canvas;
+}
+.tool_contr{
+    grid-area: tools;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.chat_contr{
+    grid-area: chat;
+    background-color: #fff;
+    width: 250px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.invite_contr{
+    grid-area: invite;
+}
+
+@media (orientation: portrait) {
+    .game-wrapper{
+        overflow-x: hidden;
+        grid-template-areas:
+              "bar      bar"
+              "canvas   canvas"
+              "tools    tools"
+              "score  chat"
+              "invite invite";
+              grid-template-columns: 1fr 1fr;
+              grid-template-rows: calc(var(--vh) * 7) min-content calc(var(--vh) * 5) 1fr;
+              gap: 10px;
+              width: 100%;
+              height: 100%;
+              max-width: 70vh;
+    } 
+    .logo_contr{
+        display: none;
+    }
+    .header_contr{}
+    .score_contr{
+        /* display: none; */
+        width: 100%;
+    }
+    .canvas_contr{}
+    .tool_contr{
+        /* display: none; */
+        width: 100%;
+        overflow: hidden;
+    }
+    .chat_contr{
+        /* display: none; */
+        width: 100%;
+        /* height: 50px; */
+    }
+    .invite_contr{
+        /* display: none; */
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,113 @@
+.pallete_container{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    /* grid-template-columns: 1fr 3fr 1fr; */
+    /* background-color: white; */
+    padding: 4px 2px;
+}
+.selected_color{
+    width: 48px;
+    height: 48px;
+    border-radius: 3px;
+    margin-right: 6px;
+}
+.pallete_tray{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.pallete_tray .pallete_list{
+    display: flex;
+    justify-content: center;
+}
+.sizes{
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6px;
+    flex: 0 1 auto;
+    background: #fff;
+    border-radius: 3px;
+    margin-right: 6px;
+}
+.size_preview{
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    margin: 0;
+}
+.icon{
+    position: absolute;
+    top: 0;
+width: 100%;
+height: 100%;
+opacity: 1;
+background-position: center;
+background-repeat: no-repeat;
+    background-image: url(../../assets/images/size.gif);
+    filter: brightness(0) drop-shadow(3px 3px 0 rgba(0, 0, 0, .3));
+}
+.container{
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    left: 0;
+display: flex;
+flex-direction: column;
+background: #fff;
+filter:drop-shadow(0 0 5px rgba(0, 0, 0, .3));
+border-radius: 3px 3px 0 0;
+z-index: 2;
+}
+.container .arrow{
+    width: 48px;
+    height: 12px;
+    background-color: #fff;
+    clip-path: polygon(50% 100%,25% 0,75% 0);
+    position:relative;
+    order: 1;
+    z-index: -1;
+}
+.options_preview{
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    margin: 0;
+    list-style-type: none;
+}
+.selected{
+    background: purple;
+}
+.container .icon_option{
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+        background-image: url(../../assets/images/size.gif);
+        filter: brightness(0) drop-shadow(3px 3px 0 rgba(0, 0, 0, .3));  
+}
+.menu{
+    width: 48px;
+    height: 48px;
+    border-radius: 3px;
+    margin-left: 6px;
+    background-color: white;
+}
+.undo{
+    background-image: url(../../assets/images/undo.gif);
+    filter:  drop-shadow(3px 3px 0 rgba(0, 0, 0, .3));
+}
+.clear{
+    background-image: url(../../assets/images/clear.gif);
+    filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, .3));
+}
