@@ -21,7 +21,7 @@ const ColorPallete = () => {
       <div className={styles.pallete_tray}
       >
 <div className={styles.pallete_list}>
-{Object.keys(LIGHT_COLORS).slice(0,7).map((key) => (
+{Object.keys(LIGHT_COLORS).slice(0, width > 520 ? Object.keys(LIGHT_COLORS).length : 7 ).map((key) => (
         <div
           style={{
             padding: "2px",
@@ -35,7 +35,7 @@ const ColorPallete = () => {
       ))}
       </div>
       <div className={styles.pallete_list}>
-{Object.keys(DARK_COLORS).slice(0,7).map((key) => (
+{Object.keys(DARK_COLORS).slice(0, width > 520 ? Object.keys(LIGHT_COLORS).length : 7 ).map((key) => (
         <div
           style={{
             padding: "2px",
@@ -49,7 +49,6 @@ const ColorPallete = () => {
       ))}
       </div>
 </div>
-
       {(width > 520) && <div ref={clickOutRef} class={styles.sizes}>
         <div class={styles.size_preview} onClick={()=>toggleSizeDropdown(prev=>!prev)}>
           <div class={styles.icon} style={{backgroundSize:brushSize * 5}} ></div>

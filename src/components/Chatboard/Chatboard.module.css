@@ -65,7 +65,7 @@ padding: 0.2rem 0.4rem;
 
 @media (orientation: portrait) {
     .chat_container{
-        height: 20vh;
+        height: 15vh;
     }
     .chat_input{
         width: 100%;
