@@ -8,6 +8,6 @@
 @media (orientation: portrait) {
     .canvas_conatiner {
         width: 95vw;
-        height: 50vh;
+        height: 40vh;
     }
 }
