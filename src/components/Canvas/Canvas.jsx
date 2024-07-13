@@ -57,23 +57,23 @@ const Board = ({ undo, clear, redraw }) => {
     context.beginPath();
 console.log(event , coordinates.left);
     tempCanvas.current.push({
-      x: ((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)) / coordinates.width) * 100,
-      y: ((event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)) / coordinates.height) * 100,
+      x: ((event.offsetX ? event.offsetX : (event?.touches[0]?.clientX - coordinates.left)) / coordinates.width) * 100,
+      y: ((event.offsetY ? event.offsetY : (event?.touches[0]?.clientY - coordinates.top)) / coordinates.height) * 100,
       action: "start",
       color: brushColor.value,
       size: brushSize,
     });
     tempCanvas.current.push({
-      x: (((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)) + 1) / coordinates.width) * 100,
-      y: (((event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)) + 1) / coordinates.height) * 100,
+      x: (((event.offsetX ? event.offsetX : (event?.touches[0]?.clientX - coordinates.left)) + 1) / coordinates.width) * 100,
+      y: (((event.offsetY ? event.offsetY : (event?.touches[0]?.clientY - coordinates.top)) + 1) / coordinates.height) * 100,
       action: "stop",
       color: brushColor.value,
     });
-    context.moveTo((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)), (event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)));
-    context.lineTo((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)) + 1, (event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)) + 1);
+    context.moveTo((event.offsetX ? event.offsetX : (event?.touches[0]?.clientX - coordinates.left)), (event.offsetY ? event.offsetY : (event?.touches[0]?.clientY - coordinates.top)));
+    context.lineTo((event.offsetX ? event.offsetX : (event?.touches[0]?.clientX - coordinates.left)) + 1, (event.offsetY ? event.offsetY : (event?.touches[0]?.clientY - coordinates.top)) + 1);
     context.stroke();
     context.beginPath();
-    context.moveTo((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)), (event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)));
+    context.moveTo((event.offsetX ? event.offsetX : (event?.touches[0]?.clientX - coordinates.left)), (event.offsetY ? event.offsetY : (event?.touches[0]?.clientY - coordinates.top)));
   }
   const handleMouseMove = (event) => {
     if(!enableCanvas) return;
@@ -84,8 +84,8 @@ console.log(event , coordinates.left);
     context.lineTo((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)), (event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)));
     context.stroke();
     tempCanvas.current.push({
-      x: ((event.offsetX ? event.offsetX : (event.touches[0].clientX - coordinates.left)) / coordinates.width) * 100,
-      y: ((event.offsetY ? event.offsetY : (event.touches[0].clientY - coordinates.top)) / coordinates.height) * 100,
+      x: ((event.offsetX ? event.offsetX : (event?.touches[0]?.clientX - coordinates.left)) / coordinates.width) * 100,
+      y: ((event.offsetY ? event.offsetY : (event?.touches[0]?.clientY - coordinates.top)) / coordinates.height) * 100,
       action: "draw",
       color: brushColor.value,
     });

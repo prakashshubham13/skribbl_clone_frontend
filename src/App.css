@@ -19,4 +19,5 @@
     background-size: 350px;
     image-rendering: pixelated;
     font-family: "Nunito Sans", sans-serif;
+    overscroll-behavior-y: none;
   }

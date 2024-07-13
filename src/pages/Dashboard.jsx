@@ -205,7 +205,7 @@ const round_audio = new Audio(round_play);
       }
       case "end": {
         toggleEnabledCanvas(false);
-        console.log("END");
+        console.log("ENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
         break;
       }
       case "perform-draw": {
