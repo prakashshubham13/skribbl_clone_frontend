@@ -119,6 +119,12 @@ console.log(event , coordinates.left);
     canvas.addEventListener("mousemove", handleMouseMove);
     canvas.addEventListener("mouseup", handleMouseUp);
     window.addEventListener("mouseup", handleMouseUp);
+
+    canvas.addEventListener("touchstart", handleMouseDown);
+    canvas.addEventListener("touchmove", handleMouseMove);
+    canvas.addEventListener("touchend", handleMouseUp);
+    window.addEventListener("touchend", handleMouseUp);
+
     window.addEventListener("resize", redraw);
 
     return () => {
@@ -126,6 +132,12 @@ console.log(event , coordinates.left);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("mouseup", handleMouseUp);
+
+      canvas.removeEventListener("touchstart", handleMouseDown);
+      canvas.removeEventListener("touchmove", handleMouseMove);
+      canvas.removeEventListener("touchend", handleMouseUp);
+      window.removeEventListener("touchend", handleMouseUp);
+
       window.addEventListener("resize", redraw);
     };
   }, [brushColor, brushSize, enableCanvas]);
