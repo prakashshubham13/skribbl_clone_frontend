@@ -8,7 +8,7 @@ const Scoreboard = () => {
   console.log(playerList); 
   return (
     <div className="score_contr">
-            {Object.keys(playerList).map((data)=>(<div style={{width:'90%',borderRadius:'0.2rem',boxShadow:'0 0 0.2rem rgba(0,0,0,0.4)',padding:"0rem 0.8rem",margin:'0 auto',marginTop:'0.6rem',display:'flex',justifyContent:'space-between',alignItems:'center',flexDirection:'row',background:'rgba(0,0,0,0.1)',fontSize:'1rem',fontWeight:'800',color:'rgba(0,0,0,0.5)',background: playerList[data].role == 'performer' ? 'orange' : (playerList[data].guess && !playerList[data].present) ? 'lightgreen' : (!playerList[data].present) ? 'grey' : playerList[data].guess ? 'green' : 'white'}}>
+            {Object.keys(playerList).map((data)=>(<div style={{width:'90%',borderRadius:'0.2rem',boxShadow:'0 0 0.2rem rgba(0,0,0,0.4)',padding:"0rem 0.8rem",margin:'0 auto',marginTop:'0.6rem',display:'flex',justifyContent:'space-between',alignItems:'center',flexDirection:'row',background:'rgba(0,0,0,0.1)',fontSize:'1rem',fontWeight:'800',color:'rgba(0,0,0,0.5)',opacity: !playerList[data].present? 0.3 : 1,background: playerList[data].role == 'performer' ? 'orange' : (playerList[data].guess && !playerList[data].present) ? 'lightgreen' : (!playerList[data].present) ? 'grey' : playerList[data].guess ? 'green' : 'white'}}>
         <div style={{display:'flex',alignItems:'center'}}>
           <div className={styles.avatar_container}>
               <div className={styles.avatar} style={{ "--size": 26 + "px" }}>
