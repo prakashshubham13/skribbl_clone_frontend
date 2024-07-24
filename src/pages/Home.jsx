@@ -8,6 +8,7 @@ import { generateString } from "../utils/helper/helper";
 import { Theme } from "../utils/theme/ThemeContext";
 import { updateRoomId } from "../redux/gameSlice";
 import { useDispatch } from "react-redux";
+import Loading from "../assets/images/loading.gif";
 
 const URL = process.env.REACT_APP_SOCKET_URL;
 
@@ -135,11 +136,12 @@ function miniAvatarReducer(state, action) {
 }
 
 const Login = () => {
-  const {roomId} = useParams();
-  console.log("--------------",roomId,typeof roomId);
+  const { roomId } = useParams();
+  console.log("--------------", roomId, typeof roomId);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [avatar, dispatchAvatar] = useReducer(avatarReducer, {
     color: Math.floor(Math.random() * color_coordinated.length),
     eyes: Math.floor(Math.random() * eyes_coordinated.length),
@@ -158,15 +160,14 @@ const Login = () => {
   const [active, setActive] = useState(new Array(8).fill(false));
   const [name, setName] = useState("");
   const [lang, setLang] = useState("eng");
-  const {updateSocket} = useContext(Theme);
+  const { updateSocket } = useContext(Theme);
 
-//  useEffect(() => {
-  
-//    return () => {
-     
-//    }
-//  }, [])
- 
+  //  useEffect(() => {
+
+  //    return () => {
+
+  //    }
+  //  }, [])
 
   const updateMiniAvatar = (index) => {
     changeMiniAvatar((prevState) =>
@@ -190,51 +191,68 @@ const Login = () => {
     }, 100);
   };
 
-  async function establishSocketConnection(){
-    const {createSocket} = await import('../utils/socket');
-    try{const socket = createSocket(URL);
+  async function establishSocketConnection() {
+    setLoading(true);
+    const { createSocket } = await import("../utils/socket");
+    try {
+      const socket = createSocket(URL);
       updateSocket(socket);
-      socket.on('joined',(data)=>{
+      socket.on("joined", (data) => {
         dispatch(updateRoomId(data.roomId));
-        console.log(data,data.roomId); 
-        navigate('/dashboard')
-      })
-      socket.on('join-error',(data)=>{
-
+        console.log(data, data.roomId);
+        navigate("/dashboard");
+      });
+      socket.on("join-error", (data) => {
         console.log(data);
-      })
-    return socket;
-    }catch(err){
+      });
+      return socket;
+    } catch (err) {
       console.log(err);
     }
   }
 
-  const joinRoom = async() => {
-    console.log(roomId,!roomId);
-    if(!roomId) return;
-    if(!name || name.length < 3) return;
+  const joinRoom = async () => {
+    console.log(roomId, !roomId);
+    if (!roomId) return;
+    if (!name || name.length < 3) return;
     const socket = await establishSocketConnection();
     console.log(socket);
     const roomName = generateString(6);
     console.log(roomName);
 
-    socket.emit("join",{roomId:roomId, name:name, avatar:avatar});
-socket.on('joined',(data)=>console.log(data));
+    socket.emit("join", { roomId: roomId, name: name, avatar: avatar });
+    socket.on("joined", (data) => console.log(data));
   };
 
   const createRoom = async () => {
-    if(!name || name.length < 3) return;
+    if (!name || name.length < 3) return;
     const socket = await establishSocketConnection();
     console.log(socket);
 
     console.log(socket);
     console.log(name);
-    socket.emit("create-room",{ name: name, avatar:avatar });
+    socket.emit("create-room", { name: name, avatar: avatar });
   };
 
   const changeLang = (e) => {};
   return (
     <>
+      {loading && (
+        <div
+          style={{
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex:'99999'
+          }}
+        >
+          <img src={Loading} alt="loading..." style={{width:'8rem',height:'8rem'}}/>
+        </div>
+      )}
       <div className={styles.home}>
         <div className={styles.logo_big}>
           <Link to="/">
@@ -390,10 +408,16 @@ socket.on('joined',(data)=>console.log(data));
               ></div>
             </div>
           </div>
-          <button className={`${styles.button} ${styles.play}`} onClick={joinRoom}>
+          <button
+            className={`${styles.button} ${styles.play}`}
+            onClick={joinRoom}
+          >
             <span>{t("btn_1")}</span>
           </button>
-          <button className={`${styles.button} ${styles.create}`} onClick={createRoom}>
+          <button
+            className={`${styles.button} ${styles.create}`}
+            onClick={createRoom}
+          >
             <span>{t("btn_2")}</span>
           </button>
         </div>

@@ -16,6 +16,7 @@ import { updateTime } from "../redux/timerSlice.js";
 import { updatePlayer } from "../redux/playerSlice.js";
 import { updateChatList } from "../redux/chatSlice.js";
 import {
+  setGameEnd,
   updateCurrentRound,
   updateGameOn,
   updateGuessList,
@@ -205,6 +206,7 @@ const round_audio = new Audio(round_play);
       }
       case "end": {
         toggleEnabledCanvas(false);
+        dispatch(setGameEnd(true));
         console.log("ENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
         break;
       }

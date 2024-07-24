@@ -27,6 +27,7 @@ const gameSlice = createSlice({
         startBtnEnable: false,
         gameOn: false,
         showWaitScreen: false,
+        gameEnd: false
     },
     reducers:{
        updateTotalRound:(state, action)=>{
@@ -55,10 +56,13 @@ const gameSlice = createSlice({
        },
        updateShowWaitScreen:(state,action)=>{
         state.showWaitScreen = action.payload;
+       },
+       setGameEnd:(state)=>{
+        state.gameEnd = true;
        }
     }
 })
 
-export const {updateCurrentRound,updateGuessList,updateHint,updateMssg,updateTotalRound,updateGameOn,updateReadyEnable,updateRoomId,updateShowWaitScreen} = gameSlice.actions;
+export const {updateCurrentRound,updateGuessList,updateHint,updateMssg,updateTotalRound,updateGameOn,updateReadyEnable,updateRoomId,updateShowWaitScreen, setGameEnd} = gameSlice.actions;
 
 export default gameSlice.reducer;

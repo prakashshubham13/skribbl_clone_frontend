@@ -8,7 +8,12 @@ const GameConsole = () => {
     (state) => state.game
   );
   const { playerList } = useSelector((state) => state.player);
-  const {showWaitScreen} = useSelector((state) => state.game);
+  const {showWaitScreen,endGame} = useSelector((state) => state.game);
+  const getSortedList = (list) => {
+    return Object.keys(list).map((data)=>{
+      return list[data];
+    })
+  }
   return (
     <>
       {!gameOn || guessList.length || showWaitScreen ? (
@@ -71,10 +76,10 @@ const GameConsole = () => {
               }}
             >
               <div style={{marginBottom:'1rem'}}>
-                <h1 style={{color:'crimson',borderBottom:'0.11rem solid grey'}}>Time's Up</h1>
+                <h1 style={{color:'crimson',borderBottom:'0.11rem solid grey'}}>{endGame ? 'Game Over' : `Time's Up`}</h1>
               </div>
-              {Object.keys(playerList).map((data)=>(<div style={{width:'50%',borderRadius:'0.2rem',boxShadow:'0 0 0.2rem rgba(0,0,0,0.4)',padding:"0.2rem 0.8rem",marginTop:'0rem',display:'flex',justifyContent:'space-between',alignItems:'center',flexDirection:'row',background:'rgba(0,0,0,0.1)',fontSize:'1.2rem',fontWeight:'800',color:'rgba(0,0,0,0.5)'}}>
-        <div>{playerList[data].name}</div>  <div>{playerList[data].score}</div>
+              {getSortedList(playerList).sort((a,b)=>b.score - a.score).map((data)=>(<div style={{width:'50%',borderRadius:'0.2rem',boxShadow:'0 0 0.2rem rgba(0,0,0,0.4)',padding:"0.2rem 0.8rem",marginTop:'0rem',display:'flex',justifyContent:'space-between',alignItems:'center',flexDirection:'row',background:'rgba(0,0,0,0.1)',fontSize:'1.2rem',fontWeight:'800',color:'rgba(0,0,0,0.5)'}}>
+        <div>{data.name}</div>  <div>{data.score}</div>
       </div>))}
             </div>
           )}
