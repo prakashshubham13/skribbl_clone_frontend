@@ -59,6 +59,7 @@ const gameSlice = createSlice({
        },
        setGameEnd:(state)=>{
         state.gameEnd = true;
+        state.showWaitScreen = true;
        }
     }
 })
