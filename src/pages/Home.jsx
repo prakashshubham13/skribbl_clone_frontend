@@ -9,6 +9,7 @@ import { Theme } from "../utils/theme/ThemeContext";
 import { updateRoomId } from "../redux/gameSlice";
 import { useDispatch } from "react-redux";
 import Loading from "../assets/images/loading.gif";
+import Popup from "../components/Popup";
 
 const URL = process.env.REACT_APP_SOCKET_URL;
 
@@ -142,6 +143,7 @@ const Login = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({toggle:false, mssg:''});
   const [avatar, dispatchAvatar] = useReducer(avatarReducer, {
     color: Math.floor(Math.random() * color_coordinated.length),
     eyes: Math.floor(Math.random() * eyes_coordinated.length),
@@ -203,7 +205,9 @@ const Login = () => {
         navigate("/dashboard");
       });
       socket.on("join-error", (data) => {
-        console.log(data);
+        console.log('--------------errorrrrrrr',data);
+        setError({toggle:true, mssg:data.msg}); 
+        setLoading(false);
       });
       return socket;
     } catch (err) {
@@ -213,8 +217,14 @@ const Login = () => {
 
   const joinRoom = async () => {
     console.log(roomId, !roomId);
-    if (!roomId) return;
-    if (!name || name.length < 3) return;
+    if (!roomId) {
+      setError({toggle:true, mssg:'No Room Id Found - Create Private Room'});
+      return;
+    };
+    if (!name || name.length < 3){
+      setError({toggle:true, mssg:'Name should be greater than 3 characters'});  
+      return;
+    }
     const socket = await establishSocketConnection();
     console.log(socket);
     const roomName = generateString(6);
@@ -237,6 +247,7 @@ const Login = () => {
   const changeLang = (e) => {};
   return (
     <>
+    <Popup open={error.toggle} onClose={()=>setError({toggle:false, mssg:''})} mssg={error.mssg}/>
       {loading && (
         <div
           style={{
